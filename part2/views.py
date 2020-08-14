@@ -33,6 +33,13 @@ def signup(req):
         email = req.POST.get('email')
         phone = req.POST.get('phone')
         gender = req.POST.get('gender')
+        if (username == ''
+        or password == ''
+        or firstname == ''
+        or lastName == ''
+        or phone == ''
+        or email == ''):
+            return render(req, 'part2/Signup.html', {'error':'Enter all fields!'})
         if password == confirmPassword:
             try:
                 user = User.objects.create_user(
