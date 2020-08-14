@@ -12,7 +12,8 @@
         {% if message %}
         <h2>{{ message }}</h2>
         {% endif %}
-        <form action="_login" method="POST">
+        <form action="{% url '_login' %}" method="POST">
+            {% csrf_token %}
             <label for="username">Username: </label>
             <input type="text" name="username" id="username">
             <br>

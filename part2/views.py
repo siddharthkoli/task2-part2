@@ -16,10 +16,11 @@ def _login(req):
 
             if user is not None:
                 login(req, user)
-                return render(req, 'part2/home.html', {'user':username})
+                return render(req, 'part2/Home.html', {'username':username})
+            return render(req, 'part2/Index.html', {'message': "Invalid Credentials"})
         except:
-            return render(req, 'part2/index.html', {'message': "Some error occurred! Please try again"})
-    return render(req, 'part2/index.html', {'message': "Invalid Credentials"})
+            return render(req, 'part2/Index.html', {'message': "Something went wrong"})
+    return render(req, 'part2/index.html')
 
 
 def signup(req):
@@ -47,7 +48,7 @@ def signup(req):
             except:
                 return render(req, 'part2/Signup.html', {'error':'Username already exists!'})
         return render(req, 'part2/Signup.html', {'error': 'Both passwords do not match.'})
-    return render(req, 'part2/Signup.html', {'error': 'Something went wrong. Try again.'})
+    return render(req, 'part2/Signup.html')
 
 
 def _logout(req):

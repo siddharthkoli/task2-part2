@@ -11,7 +11,8 @@
         <h1>Welcome {{ username }}</h1>
         {% endif %}
     </div>
-    <form action="_logout" method="POST">
+    <form action="{% url '_logout' %}" method="POST">
+        {% csrf_token %}
         <button type="submit">Logout</button>
         {% if error %}
         <h3>{{ error }}</h3>
